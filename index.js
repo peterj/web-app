@@ -23,7 +23,8 @@ app.get('/', (req, res) => {
       ipAddress
     }
 
-    res.render("index", { serverInfo, clientInfo: req.headers});
+    var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    res.render("index", { serverInfo, clientInfo: {ip }, headers: req.headers});
    // res.send(os.hostname());
     // console.log('req', req.headers);
     //res.send('Hello');
