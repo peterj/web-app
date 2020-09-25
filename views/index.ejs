@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sample Web App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+  </head>
+<body>
+    <div class="mt-12 container mx-auto">
+      <div class="flex flex-col"> 
+        <strong>Server info:</strong>
+        <code>
+          <span><%-JSON.stringify(serverInfo)%></span>
+
+        </code>
+      </div>
+
+      <div class="mt-12 flex flex-col"> 
+        <strong>Client info:</strong>
+        <code>
+
+          <span><%-JSON.stringify(clientInfo)%></span>
+        </code>
+      </div>
+
+    </div>
+  </body>
+</html>
