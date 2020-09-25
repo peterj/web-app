@@ -6,7 +6,10 @@ const path = require('path');
 const port = process.env.PORT || 8080;
 
 app.set('views', path.join(__dirname, 'views'));
+app.use(express.static(__dirname + '/public'));
 app.set('view engine', "ejs");
+const ip = require('ip');
+const ipAddress = ip.address();
 
 app.get('/', (req, res) => {
     //var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
@@ -17,10 +20,8 @@ app.get('/', (req, res) => {
       arch: os.arch(),
       userInfo: os.userInfo().shell,
       hostname: os.hostname(),
+      ipAddress
     }
-
-
-    
 
     res.render("index", { serverInfo, clientInfo: req.headers});
    // res.send(os.hostname());
