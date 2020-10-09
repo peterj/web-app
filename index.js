@@ -13,7 +13,6 @@ const ip = require('ip');
 const ipAddress = ip.address();
 
 app.get('/', (req, res) => {
-
     const serverInfo = {
       platform: os.platform(),
       cpus: os.cpus(),
@@ -26,6 +25,24 @@ app.get('/', (req, res) => {
     var clientIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     res.setHeader('Set-Cookie', lbCookieName);
     res.render("index", { serverInfo, clientInfo: { ip: clientIp }, headers: req.headers});
+});
+
+app.get('/hello', (req, res) => {
+  const data = {
+    message: 'Hello',
+    date: Date.now(),
+  }
+  res.json(data)
+});
+
+app.get('/version', (req, res) => {
+  const pkg = require('./package.json');
+  const data = {
+    name: pkg.name,
+    version: pkg.version,
+    dependencies: pkg.dependencies,
+  }
+  res.json(data)
 });
 
 app.listen(port, () => {
