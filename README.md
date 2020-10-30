@@ -11,7 +11,8 @@ Clone the repo and run on the server with:
 
 ```
 git clone https://github.com/peterj/web-app
-cd webapp
+cd web-app
+export LB_COOKIE_NAME=oci-lb-cookie
 sudo npm install nodemon -D
 sudo PORT=80 npm run start:dev
 ```
